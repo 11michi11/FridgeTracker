@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/calendar"
+            android:title="@string/calendar"/>
+        <item
+            android:id="@+id/week"
+            android:title="@string/plan_week"/>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/shoppingList"
+            android:title="@string/shopping_list"/>
+        <item
+            android:id="@+id/fridge"
+            android:title="@string/fridge_content"/>
+        <item
+            android:id="@+id/menu"
+            android:title="@string/menu"/>
+    </group>
+
+</menu>
