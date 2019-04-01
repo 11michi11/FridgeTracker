@@ -33,8 +33,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer.addDrawerListener(toggle)
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
-
-        supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, Home()).commit()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -84,4 +82,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 }

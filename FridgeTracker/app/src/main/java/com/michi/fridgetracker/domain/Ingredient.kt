@@ -1,3 +1,13 @@
 package com.michi.fridgetracker.domain
 
-data class Ingredient (val name : String, val quantity : Double, val price : Double?)
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "ingredients")
+data class Ingredient(
+    @PrimaryKey(autoGenerate = false)
+    var id: Int = 0,
+    var name: String,
+    var quantity: Double,
+    var price: Double?
+)

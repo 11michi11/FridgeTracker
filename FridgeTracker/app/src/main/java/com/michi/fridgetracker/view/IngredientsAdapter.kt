@@ -9,28 +9,44 @@ import androidx.recyclerview.widget.RecyclerView
 import com.michi.fridgetracker.R
 import com.michi.fridgetracker.domain.Ingredient
 
-class IngredientsAdapter(private val ingredients: List<Ingredient>) : RecyclerView.Adapter<IngredientsAdapter.ViewHolder>() {
+class IngredientsAdapter :
+    RecyclerView.Adapter<IngredientsAdapter.ViewHolder>() {
+
+    private var ingredients: List<Ingredient>? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientsAdapter.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.ingredients_list_item, parent, false)
         return ViewHolder(view) {
-            Toast.makeText(parent.context, "Clicked ${ingredients[it].name}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(parent.context, "Clicked ${ingredients!![it].name}", Toast.LENGTH_SHORT).show()
         }
     }
 
+    fun setIngredients(ingredients: List<Ingredient>) {
+        this.ingredients = ingredients
+        notifyDataSetChanged()
+    }
+
+
     override fun getItemCount(): Int {
-        return ingredients.size
+        if (ingredients != null)
+            return ingredients!!.size
+        return 0
     }
 
     override fun onBindViewHolder(viewHolder: IngredientsAdapter.ViewHolder, position: Int) {
-        viewHolder.name.text = ingredients[position].name
-        viewHolder.quantity.text = ingredients[position].quantity.toString()
-        viewHolder.price.text = ingredients[position].price.toString()
+        if (ingredients != null) {
+            viewHolder.name.text = ingredients!![position].name
+            viewHolder.quantity.text = ingredients!![position].quantity.toString()
+            viewHolder.price.text = ingredients!![position].price.toString()
+        } else {
+            viewHolder.name.text = "Not ready yet"
+        }
     }
 
 
-    class ViewHolder(itemView: View, private val listener: (Int) -> Unit) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener {
+    class ViewHolder(itemView: View, private val listener: (Int) -> Unit) :
+        RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val name: TextView = itemView.findViewById(R.id.ingredientName)
         val quantity: TextView = itemView.findViewById(R.id.ingredientQuantity)
         val price: TextView = itemView.findViewById(R.id.ingredientPrice)
