@@ -7,7 +7,7 @@ import com.michi.fridgetracker.domain.Ingredient
 @Dao
 interface IngredientsDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(ingredient: Ingredient)
 
     @Delete

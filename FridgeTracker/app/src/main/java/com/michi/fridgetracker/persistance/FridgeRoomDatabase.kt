@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.michi.fridgetracker.domain.Ingredient
 
-@Database(entities = [Ingredient::class], version = 1)
+@Database(entities = [Ingredient::class], version = 2)
 abstract class FridgeRoomDatabase : RoomDatabase() {
 
     abstract fun ingredientsDao(): IngredientsDao
@@ -20,7 +20,10 @@ abstract class FridgeRoomDatabase : RoomDatabase() {
             if (INSTANCE == null) {
                 synchronized(FridgeRoomDatabase::class) {
                     INSTANCE =
-                        Room.databaseBuilder(context.applicationContext, FridgeRoomDatabase::class.java, "DB").build()
+                        Room.databaseBuilder(context.applicationContext, FridgeRoomDatabase::class.java, "DB")
+                            .fallbackToDestructiveMigration() //update db with destroying current one
+                            .addCallback(fridgeDatabaseCallback) // populate db
+                            .build()
                 }
             }
             return INSTANCE
