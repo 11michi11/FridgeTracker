@@ -16,8 +16,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var toggle : ActionBarDrawerToggle
-    private lateinit var navController : NavController
+    private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,11 +36,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.calendar -> {
                 Toast.makeText(this, "Calendar", Toast.LENGTH_SHORT).show()
             }
-            R.id.week-> {
+            R.id.week -> {
                 Toast.makeText(this, "Week", Toast.LENGTH_SHORT).show()
             }
             R.id.shoppingList -> {
@@ -49,8 +49,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.fridge -> {
                 navController.navigate(R.id.fridgeContentFragment)
             }
-            com.michi.fridgetracker.R.id.menu -> {
-                Toast.makeText(this, "Menu", Toast.LENGTH_SHORT).show()
+            R.id.menu -> {
+                navController.navigate(R.id.menuFragment)
             }
         }
 

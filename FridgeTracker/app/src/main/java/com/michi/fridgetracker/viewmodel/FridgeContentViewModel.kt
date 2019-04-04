@@ -1,10 +1,11 @@
-package com.michi.fridgetracker.view
+package com.michi.fridgetracker.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.michi.fridgetracker.domain.Ingredient
 import com.michi.fridgetracker.persistance.IngredientsRepository
+import com.michi.fridgetracker.view.IngredientsAdapter
 
 class FridgeContentViewModel(application: Application) : AndroidViewModel(application) {
 

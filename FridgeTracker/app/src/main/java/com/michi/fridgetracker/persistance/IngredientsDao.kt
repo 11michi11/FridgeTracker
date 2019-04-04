@@ -19,8 +19,8 @@ interface IngredientsDao {
     @Query("select * from ingredients")
     fun findAll() : LiveData<List<Ingredient>>
 
-    @Query("SELECT * from ingredients where id = :id")
-    fun findyById(id : Int) : Ingredient
+    @Query("SELECT * from ingredients where ingredientId = :ingredientId")
+    fun findById(ingredientId : Int) : Ingredient
 
     @Query("delete from ingredients")
     fun deleteAll()

@@ -1,4 +1,4 @@
-package com.michi.fridgetracker.view
+package com.michi.fridgetracker.viewmodel
 
 import androidx.lifecycle.ViewModel
 

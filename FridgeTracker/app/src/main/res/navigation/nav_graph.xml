@@ -11,10 +11,13 @@
     <fragment android:id="@+id/home2" android:name="com.michi.fridgetracker.view.Home" android:label="home_fragment"
               tools:layout="@layout/home_fragment">
         <action android:id="@+id/action_home2_to_fridgeContentFragment" app:destination="@id/fridgeContentFragment"/>
+        <action android:id="@+id/action_home2_to_menu2" app:destination="@id/menuFragment"/>
     </fragment>
     <fragment android:id="@+id/addIngredient2" android:name="com.michi.fridgetracker.view.AddIngredient"
               android:label="fragment_add_ingredient" tools:layout="@layout/fragment_add_ingredient">
         <action android:id="@+id/action_addIngredient2_to_fridgeContentFragment2"
                 app:destination="@id/fridgeContentFragment"/>
     </fragment>
+    <fragment android:id="@+id/menuFragment" android:name="com.michi.fridgetracker.view.Menu" android:label="menu_fragment"
+              tools:layout="@layout/menu_fragment"/>
 </navigation>

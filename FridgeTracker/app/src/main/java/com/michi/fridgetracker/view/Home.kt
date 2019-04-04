@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.michi.fridgetracker.R
+import com.michi.fridgetracker.viewmodel.HomeViewModel
 
 class Home : Fragment() {
 

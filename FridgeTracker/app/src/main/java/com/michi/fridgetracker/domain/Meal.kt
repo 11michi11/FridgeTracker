@@ -1,11 +1,21 @@
 package com.michi.fridgetracker.domain
 
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
 import java.time.LocalTime
 
-class Meal(
-    val name : String,
-    val time : LocalTime,
-    private val ingredients : List<Ingredient>) {
+@Entity(tableName = "meals")
+data class Meal(
+    @PrimaryKey(autoGenerate = true)
+    var mealId: Int = 0,
+    var name: String
+) {
 
-    fun getIgredients() = ingredients.toList()
+    @Ignore
+    var ingredients: List<Ingredient> = emptyList()
+
+    fun hasIngredients() = ingredients.isNotEmpty()
+
 }
+

@@ -9,7 +9,7 @@
     <string name="close">close</string>
     <string name="add_ingredient">Add Ingredient</string>
     <string name="ingredient_name">Name</string>
-    <string name="price">Price</string>
+    <string name="price">Price (optional)</string>
     <string name="save">Save</string>
 
     <!-- TODO: Remove or change this placeholder text -->

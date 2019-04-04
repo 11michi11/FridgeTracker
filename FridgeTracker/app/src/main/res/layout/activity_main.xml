@@ -28,11 +28,9 @@
 
                 app:defaultNavHost="true"
                 app:navGraph="@navigation/nav_graph"
-        >
-        </fragment>
+        />
 
     </LinearLayout>
-
 
 
     <com.google.android.material.navigation.NavigationView
