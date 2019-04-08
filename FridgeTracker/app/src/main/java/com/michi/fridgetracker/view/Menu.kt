@@ -8,8 +8,10 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.michi.fridgetracker.R
+import com.michi.fridgetracker.viewmodel.MenuAdapter
 import com.michi.fridgetracker.viewmodel.MenuViewModel
 import kotlinx.android.synthetic.main.menu_fragment.*
 
@@ -38,12 +40,12 @@ class Menu : Fragment() {
                 R.drawable.ic_add
             )
         )
-//        addIngredient.setOnClickListener(
-//            Navigation.createNavigateOnClickListener(
-//                R.id.action_fridgeContentFragment_to_addIngredient2,
-//                null
-//            )
-//        )
+        addMeal.setOnClickListener(
+            Navigation.createNavigateOnClickListener(
+                R.id.action_menuFragment_to_addMeal2,
+                null
+            )
+        )
 
         menu.hasFixedSize()
         menu.layoutManager = LinearLayoutManager(menu.context)

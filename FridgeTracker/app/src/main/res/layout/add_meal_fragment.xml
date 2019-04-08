@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.AddMeal">
+
+    <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_alignParentTop="true">
+
+        <TextView
+                android:id="@+id/nameLabel"
+                android:layout_width="wrap_content"
+                style="@style/DefaultText"
+                android:layout_height="wrap_content"
+                android:text="@string/create_meal_name"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+        />
+
+        <EditText
+                android:id="@+id/mealNameCreate"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/nameLabel"
+                android:layout_margin="20dp"
+        />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ingredients"
+                style="@style/IngredientName"
+                android:layout_below="@id/mealNameCreate"
+                android:background="#a0a0a0"
+                android:elevation="4dp"
+        />
+
+    </RelativeLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mealsIngredients"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/header"
+            android:layout_above="@+id/buttons"/>
+
+    <LinearLayout
+            android:id="@+id/buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+    >
+        <Button
+                android:id="@+id/saveMeal"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="@string/save"
+                android:onClick="saveMeal"
+        />
+        <Button
+                android:id="@+id/choseIngredients"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="@string/add_ingredients"
+                android:onClick="choseIngredients"
+        />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

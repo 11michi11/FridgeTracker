@@ -18,7 +18,7 @@ abstract class FridgeRoomDatabase : RoomDatabase() {
     abstract fun mealsWithIngredientsDao(): MealWithIngredientsDao
 
     companion object {
-        var INSTANCE: FridgeRoomDatabase? = null
+        private var INSTANCE: FridgeRoomDatabase? = null
 
         fun getAppDataBase(context: Context): FridgeRoomDatabase? {
             if (INSTANCE == null) {
@@ -64,7 +64,7 @@ abstract class FridgeRoomDatabase : RoomDatabase() {
 //                val rolls = Ingredient(name = "Frozen bread rolls", quantity = 12.0, price = 11.00)
 //
 //                ingredients.addAll(listOf(salami, rolls))
-//                ingredients.forEach { ingredientsDao.insert(it) }
+                ingredients.forEach { ingredientsDao.insert(it) }
 //                val meal = Meal(name = "Salami Sandwich")
 //                mealsDao.insert(meal)
 //

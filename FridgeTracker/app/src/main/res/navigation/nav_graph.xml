@@ -19,5 +19,13 @@
                 app:destination="@id/fridgeContentFragment"/>
     </fragment>
     <fragment android:id="@+id/menuFragment" android:name="com.michi.fridgetracker.view.Menu" android:label="menu_fragment"
-              tools:layout="@layout/menu_fragment"/>
+              tools:layout="@layout/menu_fragment">
+        <action android:id="@+id/action_menuFragment_to_addMeal2" app:destination="@id/addMeal2"/>
+    </fragment>
+    <activity android:id="@+id/mainActivity" android:name="com.michi.fridgetracker.view.MainActivity"
+              android:label="main_content" tools:layout="@layout/main_content"/>
+    <fragment android:id="@+id/addMeal2" android:name="com.michi.fridgetracker.view.AddMeal"
+              android:label="add_meal_fragment" tools:layout="@layout/add_meal_fragment">
+        <action android:id="@+id/action_addMeal2_to_mainActivity" app:destination="@id/mainActivity"/>
+    </fragment>
 </navigation>

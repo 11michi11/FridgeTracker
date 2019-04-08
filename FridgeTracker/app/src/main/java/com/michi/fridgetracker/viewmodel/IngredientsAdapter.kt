@@ -1,4 +1,4 @@
-package com.michi.fridgetracker.view
+package com.michi.fridgetracker.viewmodel
 
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +14,7 @@ class IngredientsAdapter :
 
     private var ingredients: List<Ingredient>? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientsAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.ingredients_list_item, parent, false)
         return ViewHolder(view) {
@@ -34,7 +34,7 @@ class IngredientsAdapter :
         return 0
     }
 
-    override fun onBindViewHolder(viewHolder: IngredientsAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         if (ingredients != null) {
             viewHolder.name.text = ingredients!![position].name
             viewHolder.quantity.text = ingredients!![position].quantity.toString()
@@ -47,7 +47,7 @@ class IngredientsAdapter :
 
     class ViewHolder(itemView: View, private val listener: (Int) -> Unit) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        val name: TextView = itemView.findViewById(R.id.ingredientName)
+        val name: TextView = itemView.findViewById(R.id.ingredientNameChoice)
         val quantity: TextView = itemView.findViewById(R.id.ingredientQuantity)
         val price: TextView = itemView.findViewById(R.id.ingredientPrice)
 

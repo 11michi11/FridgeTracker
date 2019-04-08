@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel;
 import com.michi.fridgetracker.domain.Meal
-import com.michi.fridgetracker.view.MenuAdapter
 
 class MenuViewModel : ViewModel() {
 

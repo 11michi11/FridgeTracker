@@ -1,4 +1,4 @@
-package com.michi.fridgetracker.view
+package com.michi.fridgetracker.viewmodel
 
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +16,7 @@ class MenuAdapter : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.menu_list_item, parent, false)
-        return MenuAdapter.ViewHolder(view) {
+        return ViewHolder(view) {
             Toast.makeText(parent.context, "Clicked ${meals!![it].name}", Toast.LENGTH_SHORT).show()
         }
     }

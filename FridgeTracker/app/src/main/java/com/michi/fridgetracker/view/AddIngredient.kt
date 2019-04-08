@@ -39,7 +39,7 @@ class AddIngredient : Fragment() {
 
 
     private fun saveIngredientAndGoBack(view: View) {
-        val name = ingredientName.text.toString()
+        val name = ingredientNameChoice.text.toString()
         val priceString = ingredientPrice.text.toString()
         val price =
             if (priceString.isBlank())
