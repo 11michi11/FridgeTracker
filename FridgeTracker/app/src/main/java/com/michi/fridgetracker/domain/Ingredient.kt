@@ -1,5 +1,6 @@
 package com.michi.fridgetracker.domain
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
@@ -14,5 +15,13 @@ data class Ingredient(
 ) : Serializable
 
 
+@Entity(tableName = "meals_ingredients")
+data class MealsIngredient(
+    @Embedded
+    var ingredient: Ingredient,
+    var mealId: Int,
+    @PrimaryKey(autoGenerate = true)
+var mealsIngredientId: Int = 0
+) : Serializable
 
-data class IngredientToChoose(val ingredient: Ingredient,var isChecked : Boolean = false)
+data class IngredientToChoose(val ingredient: Ingredient, var isChecked: Boolean = false)

@@ -58,6 +58,8 @@
             android:orientation="horizontal"
             android:layout_alignParentBottom="true"
     >
+
+        <!--Possibly change to bottom nav bar-->
         <Button
                 android:id="@+id/saveMeal"
                 android:layout_width="0dp"

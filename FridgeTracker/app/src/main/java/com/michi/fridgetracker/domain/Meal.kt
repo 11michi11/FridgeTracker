@@ -13,9 +13,20 @@ data class Meal(
 ) {
 
     @Ignore
-    var ingredients: List<Ingredient> = emptyList()
+    var ingredients: MutableList<MealsIngredient> = mutableListOf()
 
     fun hasIngredients() = ingredients.isNotEmpty()
+
+    fun addIngredients(ingredients: List<Ingredient>) {
+        ingredients.forEach {
+            this.ingredients.add(MealsIngredient(it, mealId))
+        }
+    }
+
+    override fun toString(): String {
+        return "Meal(mealId=$mealId, name='$name', ingredients=$ingredients)"
+    }
+
 
 }
 
