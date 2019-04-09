@@ -66,7 +66,6 @@
                 android:layout_height="60dp"
                 android:layout_weight="1"
                 android:text="@string/save"
-                android:onClick="saveMeal"
         />
         <Button
                 android:id="@+id/choseIngredients"
@@ -74,7 +73,6 @@
                 android:layout_height="60dp"
                 android:layout_weight="1"
                 android:text="@string/add_ingredients"
-                android:onClick="choseIngredients"
         />
 
     </LinearLayout>

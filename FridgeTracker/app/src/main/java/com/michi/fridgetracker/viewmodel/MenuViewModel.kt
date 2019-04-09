@@ -1,22 +1,23 @@
 package com.michi.fridgetracker.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel;
 import com.michi.fridgetracker.domain.Meal
+import com.michi.fridgetracker.persistance.MealRepository
 
-class MenuViewModel : ViewModel() {
+class MenuViewModel(application: Application) : AndroidViewModel(application) {
 
-    private lateinit var adapter: MenuAdapter
-    private lateinit var meals: MutableLiveData<List<Meal>>
+    private lateinit var mealRepository: MealRepository
+    private lateinit var meals: LiveData<List<Meal>>
 
     fun init() {
-        meals = MutableLiveData()
-        meals.value = listOf(Meal(name = "Salami Sandwich"))
+        mealRepository = MealRepository.getInstance(this.getApplication())
+        meals = mealRepository.getAllMeals()
     }
 
     public fun insert(meal: Meal) {
-
+        mealRepository.insert(meal)
     }
 
     fun getAllMeals(): LiveData<List<Meal>> = meals

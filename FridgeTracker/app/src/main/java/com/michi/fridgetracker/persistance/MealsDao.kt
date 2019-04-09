@@ -25,17 +25,14 @@ abstract class MealsDao {
     @Insert
     abstract fun insertOnlyMeal(meal: Meal) : Long
 
-    public fun findAll(): LiveData<List<Meal>> {
+    public fun findAll(): List<Meal> {
         val meals = findAllMeals()
 
         for (meal in meals) {
             val mealsWithIngredients = findAllMealsIngredients(meal.mealId)
             meal.ingredients = mealsWithIngredients.toMutableList()
         }
-
-        val liveData = MutableLiveData<List<Meal>>()
-        liveData.postValue(meals)
-        return liveData
+        return meals
     }
 
     @Query("select * from meals")

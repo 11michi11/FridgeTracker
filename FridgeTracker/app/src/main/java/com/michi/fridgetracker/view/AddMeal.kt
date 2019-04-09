@@ -42,7 +42,8 @@ class AddMeal : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(AddMealViewModel::class.java)
         choseIngredients.setOnClickListener { choseIngredients(it) }
-
+        saveMeal.setOnClickListener { saveMeal(it) }
+        
         mealsIngredients.hasFixedSize()
         mealsIngredients.layoutManager = LinearLayoutManager(mealsIngredients.context)
         adapter = IngredientsAdapter()
@@ -68,7 +69,7 @@ class AddMeal : Fragment() {
         startActivityForResult(intent, CHOOSE_INGREDIENT_REQUEST)
     }
 
-    public fun saveMeal(view: View){
+    public fun saveMeal(view: View) {
 
     }
 

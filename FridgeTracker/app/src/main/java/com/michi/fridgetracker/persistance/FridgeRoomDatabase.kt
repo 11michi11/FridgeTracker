@@ -68,10 +68,6 @@ abstract class FridgeRoomDatabase : RoomDatabase() {
                 val meal = Meal(name = "Salami Sandwich")
                 meal.addIngredients(listOf(salami, rolls))
                 mealsDao.insert(meal)
-                val value = mealsDao.findAll().value
-
-                value?.forEach { Log.d("Meals", it.toString()) }
-                Log.d("Meals", value?.toString())
             }
 
         }

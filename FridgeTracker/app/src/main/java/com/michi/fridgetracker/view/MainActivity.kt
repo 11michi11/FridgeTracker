@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.google.android.material.navigation.NavigationView
 import com.michi.fridgetracker.R
+import com.michi.fridgetracker.persistance.MealRepository
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -82,6 +83,4 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         return super.onOptionsItemSelected(item)
     }
-
-
 }
