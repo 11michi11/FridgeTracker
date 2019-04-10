@@ -3,22 +3,20 @@ package com.michi.fridgetracker.viewmodel
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.michi.fridgetracker.R
 import com.michi.fridgetracker.domain.Meal
 
-class MenuAdapter : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
+class MenuAdapter(private val viewModel: MenuViewModel) : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
 
     private var meals: List<Meal>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.menu_list_item, parent, false)
-        return ViewHolder(view) {
-            Toast.makeText(parent.context, "Clicked ${meals!![it].name}", Toast.LENGTH_SHORT).show()
-        }
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -41,17 +39,27 @@ class MenuAdapter : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
     }
 
 
-    class ViewHolder(itemView: View, private val listener: (Int) -> Unit) :
-        RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    inner class ViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView){
         val name: TextView = itemView.findViewById(R.id.mealName)
 
         init {
-            itemView.setOnClickListener(this)
+            val delete: ImageButton = itemView.findViewById(R.id.deleteMeal)
+            val edit: ImageButton = itemView.findViewById(R.id.editMeal)
+
+            delete.setOnClickListener{deleteMeal(it)}
+            edit.setOnClickListener{editMeal(it)}
+
         }
 
-        override fun onClick(view: View?) {
-            listener.invoke(adapterPosition)
+        private fun deleteMeal(view: View){
+            viewModel.delete(meals?.get(adapterPosition))
         }
+
+        private fun editMeal(view: View){
+
+        }
+
 
     }
 

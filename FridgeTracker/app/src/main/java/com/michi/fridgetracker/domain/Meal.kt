@@ -7,9 +7,9 @@ import java.time.LocalTime
 
 @Entity(tableName = "meals")
 data class Meal(
+    var name: String,
     @PrimaryKey(autoGenerate = true)
-    var mealId: Int = 0,
-    var name: String
+var mealId: Int = 0
 ) {
 
     @Ignore

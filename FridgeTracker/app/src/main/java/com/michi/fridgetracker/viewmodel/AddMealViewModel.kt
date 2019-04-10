@@ -5,9 +5,12 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.michi.fridgetracker.domain.Ingredient
+import com.michi.fridgetracker.domain.Meal
+import com.michi.fridgetracker.persistance.MealRepository
 
 class AddMealViewModel(application: Application) : AndroidViewModel(application) {
 
+    private var mealRepository = MealRepository.getInstance(this.getApplication())
     private val ingredientsLiveData = MutableLiveData<List<Ingredient>>()
     private val ingredients = mutableListOf<Ingredient>()
 
@@ -21,5 +24,12 @@ class AddMealViewModel(application: Application) : AndroidViewModel(application)
     fun addIngredients(ingredients: List<Ingredient>) {
         this.ingredients.addAll(ingredients)
         ingredientsLiveData.value = this.ingredients
+    }
+
+    fun saveMeal(name: String) {
+        val meal = Meal(name)
+        meal.addIngredients(ingredients)
+
+        mealRepository.insert(meal)
     }
 }

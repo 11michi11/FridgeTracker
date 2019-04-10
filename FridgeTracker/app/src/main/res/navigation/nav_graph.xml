@@ -27,5 +27,6 @@
     <fragment android:id="@+id/addMeal2" android:name="com.michi.fridgetracker.view.AddMeal"
               android:label="add_meal_fragment" tools:layout="@layout/add_meal_fragment">
         <action android:id="@+id/action_addMeal2_to_mainActivity" app:destination="@id/mainActivity"/>
+        <action android:id="@+id/action_addMeal2_to_menuFragment" app:destination="@id/menuFragment"/>
     </fragment>
 </navigation>

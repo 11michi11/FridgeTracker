@@ -11,6 +11,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.michi.fridgetracker.R
 import com.michi.fridgetracker.domain.Ingredient
@@ -43,7 +45,7 @@ class AddMeal : Fragment() {
         viewModel = ViewModelProviders.of(this).get(AddMealViewModel::class.java)
         choseIngredients.setOnClickListener { choseIngredients(it) }
         saveMeal.setOnClickListener { saveMeal(it) }
-        
+
         mealsIngredients.hasFixedSize()
         mealsIngredients.layoutManager = LinearLayoutManager(mealsIngredients.context)
         adapter = IngredientsAdapter()
@@ -70,7 +72,9 @@ class AddMeal : Fragment() {
     }
 
     public fun saveMeal(view: View) {
+        viewModel.saveMeal(mealNameCreate.text.toString())
 
+        this.findNavController().navigate(R.id.menuFragment)
     }
 
 }

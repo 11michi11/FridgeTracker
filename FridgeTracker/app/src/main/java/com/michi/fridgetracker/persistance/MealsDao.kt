@@ -1,10 +1,8 @@
 package com.michi.fridgetracker.persistance
 
+import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.michi.fridgetracker.domain.Meal
 import com.michi.fridgetracker.domain.MealsIngredient
 
@@ -19,11 +17,11 @@ abstract class MealsDao {
         }
     }
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertMealsIngredient(mealsIngredient: MealsIngredient)
 
-    @Insert
-    abstract fun insertOnlyMeal(meal: Meal) : Long
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    abstract fun insertOnlyMeal(meal: Meal): Long
 
     public fun findAll(): List<Meal> {
         val meals = findAllMeals()
@@ -36,15 +34,28 @@ abstract class MealsDao {
     }
 
     @Query("select * from meals")
-    abstract fun findAllMeals() : List<Meal>
+    abstract fun findAllMeals(): List<Meal>
 
     @Query("select * from meals_ingredients where mealId = :mealId")
-    abstract fun findAllMealsIngredients(mealId : Int): List<MealsIngredient>
+    abstract fun findAllMealsIngredients(mealId: Int): List<MealsIngredient>
 
     @Query("select * from meals where mealId = :mealId")
     abstract fun findById(mealId: Int): LiveData<Meal>
 
     @Query("delete from meals")
     abstract fun deleteAll()
+
+    fun delete(meal: Meal) {
+        meal.ingredients.forEach {deleteMealsIngredient(it) }
+        deleteMeal(meal.mealId)
+    }
+
+
+    @Query("delete from meals where mealId = :mealId")
+    abstract fun deleteMeal(mealId: Int)
+
+    @Delete
+    abstract fun deleteMealsIngredient(mealsIngredient: MealsIngredient)
+
 
 }

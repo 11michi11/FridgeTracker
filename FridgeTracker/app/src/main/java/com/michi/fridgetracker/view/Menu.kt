@@ -49,7 +49,7 @@ class Menu : Fragment() {
 
         menu.hasFixedSize()
         menu.layoutManager = LinearLayoutManager(menu.context)
-        val adapter = MenuAdapter()
+        val adapter = MenuAdapter(viewModel)
         menu.adapter = adapter
         viewModel.getAllMeals().observe(this, Observer { adapter.setMeals(it) })
 
