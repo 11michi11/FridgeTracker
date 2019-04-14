@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#AFAFAF">
+
+
+    <TextView
+            android:id="@+id/label"
+            android:text="Quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/IngredientName"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+    />
+
+    <EditText
+            android:id="@+id/quantityAmount"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_toRightOf="@id/label"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+    />
+    <Button
+            android:id="@+id/saveQuantity"
+            android:text="@string/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/label"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+    />
+</RelativeLayout>

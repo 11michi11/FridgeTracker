@@ -16,7 +16,7 @@ interface IngredientsDao {
     @Update
     fun update(ingredient: Ingredient)
 
-    @Query("select * from ingredients")
+    @Query("select * from ingredients order by quantity desc")
     fun findAll() : LiveData<List<Ingredient>>
 
     @Query("select * from ingredients")

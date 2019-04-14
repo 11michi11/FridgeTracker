@@ -47,7 +47,7 @@ class FridgeContentFragment : Fragment() {
 
         ingredientsList.hasFixedSize()
         ingredientsList.layoutManager = LinearLayoutManager(ingredientsList.context)
-        val adapter = IngredientsAdapter()
+        val adapter = IngredientsAdapter(viewModel)
         ingredientsList.adapter = adapter
         viewModel.getAllIngredients().observe(this, Observer { adapter.setIngredients(it) })
     }

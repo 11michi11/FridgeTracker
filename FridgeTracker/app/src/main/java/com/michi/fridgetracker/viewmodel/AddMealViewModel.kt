@@ -8,9 +8,9 @@ import com.michi.fridgetracker.domain.Ingredient
 import com.michi.fridgetracker.domain.Meal
 import com.michi.fridgetracker.persistance.MealRepository
 
-class AddMealViewModel(application: Application) : AndroidViewModel(application) {
-
+class AddMealViewModel(application: Application) : AndroidViewModel(application), IngredientSavableViewModel {
     private var mealRepository = MealRepository.getInstance(this.getApplication())
+
     private val ingredientsLiveData = MutableLiveData<List<Ingredient>>()
     private val ingredients = mutableListOf<Ingredient>()
 
@@ -31,5 +31,10 @@ class AddMealViewModel(application: Application) : AndroidViewModel(application)
         meal.addIngredients(ingredients)
 
         mealRepository.insert(meal)
+    }
+
+    override fun saveIngredientQuantity(quantity: Double, position: Int) {
+        ingredients[position].quantity = quantity
+        ingredientsLiveData.value = ingredients
     }
 }

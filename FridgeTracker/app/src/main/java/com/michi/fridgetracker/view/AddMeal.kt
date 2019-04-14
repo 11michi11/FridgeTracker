@@ -48,10 +48,9 @@ class AddMeal : Fragment() {
 
         mealsIngredients.hasFixedSize()
         mealsIngredients.layoutManager = LinearLayoutManager(mealsIngredients.context)
-        adapter = IngredientsAdapter()
+        adapter = IngredientsAdapter(viewModel)
         mealsIngredients.adapter = adapter
         viewModel.getIngredients().observe(this, Observer { adapter.setIngredients(it) })
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
