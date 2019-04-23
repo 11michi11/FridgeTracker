@@ -6,16 +6,18 @@ import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.michi.fridgetracker.domain.Ingredient
-import com.michi.fridgetracker.domain.Meal
-import com.michi.fridgetracker.domain.MealsIngredient
+import com.michi.fridgetracker.domain.*
+import java.time.LocalDate
 
-@Database(entities = [Ingredient::class, Meal::class, MealsIngredient::class], version = 7)
+@Database(entities = [Ingredient::class, Meal::class, MealsIngredient::class, DayPlan::class, PlansMeal::class], version = 8)
+@TypeConverters(Converters::class)
 abstract class FridgeRoomDatabase : RoomDatabase() {
 
     abstract fun ingredientsDao(): IngredientsDao
     abstract fun mealsDao(): MealsDao
+    abstract fun plansDao() : PlansDao
 
     companion object {
         private var INSTANCE: FridgeRoomDatabase? = null
@@ -27,6 +29,7 @@ abstract class FridgeRoomDatabase : RoomDatabase() {
                         Room.databaseBuilder(context.applicationContext, FridgeRoomDatabase::class.java, "DB")
                             .fallbackToDestructiveMigration() //update db with destroying current one
                             .addCallback(fridgeDatabaseCallback) // populate db
+                            .allowMainThreadQueries() // delete in production
                             .build()
                 }
             }
@@ -48,8 +51,10 @@ abstract class FridgeRoomDatabase : RoomDatabase() {
             override fun doInBackground(vararg p0: Unit?) {
                 val ingredientsDao = db.ingredientsDao()
                 val mealsDao = db.mealsDao()
+                val planDao = db.plansDao()
                 ingredientsDao.deleteAll()
                 mealsDao.deleteAll()
+                planDao.deleteAll()
 
                 val ingredients = mutableListOf(
                     Ingredient(name = "Spaghetti chili sauce", quantity = 1.0, price = 15.00),
@@ -68,6 +73,14 @@ abstract class FridgeRoomDatabase : RoomDatabase() {
                 val meal = Meal(name = "Salami Sandwich")
                 meal.addIngredients(listOf(salami, rolls))
                 mealsDao.insert(meal)
+
+
+                val dayPlan = DayPlan(LocalDate.now())
+                dayPlan.addMeal(meal)
+                planDao.insert(dayPlan)
+
+                planDao.findAll().forEach { Log.d("Plans", it.toString()) }
+
             }
 
         }

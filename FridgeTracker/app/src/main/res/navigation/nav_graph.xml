@@ -12,6 +12,7 @@
               tools:layout="@layout/home_fragment">
         <action android:id="@+id/action_home2_to_fridgeContentFragment" app:destination="@id/fridgeContentFragment"/>
         <action android:id="@+id/action_home2_to_menu2" app:destination="@id/menuFragment"/>
+        <action android:id="@+id/action_home2_to_calendar2" app:destination="@id/calendarFragment"/>
     </fragment>
     <fragment android:id="@+id/addIngredient2" android:name="com.michi.fridgetracker.view.AddIngredient"
               android:label="fragment_add_ingredient" tools:layout="@layout/fragment_add_ingredient">
@@ -29,4 +30,10 @@
         <action android:id="@+id/action_addMeal2_to_mainActivity" app:destination="@id/mainActivity"/>
         <action android:id="@+id/action_addMeal2_to_menuFragment" app:destination="@id/menuFragment"/>
     </fragment>
+    <fragment android:id="@+id/calendarFragment" android:name="com.michi.fridgetracker.view.Calendar"
+              android:label="calendar_fragment" tools:layout="@layout/calendar_fragment">
+        <action android:id="@+id/action_calendarFragment_to_dayPlan" app:destination="@id/dayPlan"/>
+    </fragment>
+    <fragment android:id="@+id/dayPlan" android:name="com.michi.fridgetracker.view.DayPlan"
+              android:label="day_plan_fragment" tools:layout="@layout/day_plan_fragment"/>
 </navigation>

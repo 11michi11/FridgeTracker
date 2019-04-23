@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.calendar -> {
-                Toast.makeText(this, "Calendar", Toast.LENGTH_SHORT).show()
+                navController.navigate(R.id.calendarFragment)
             }
             R.id.week -> {
                 Toast.makeText(this, "Week", Toast.LENGTH_SHORT).show()
