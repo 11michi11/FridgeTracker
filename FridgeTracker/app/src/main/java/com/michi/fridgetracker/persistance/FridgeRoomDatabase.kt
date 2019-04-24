@@ -74,13 +74,14 @@ abstract class FridgeRoomDatabase : RoomDatabase() {
                 meal.addIngredients(listOf(salami, rolls))
                 mealsDao.insert(meal)
 
-
-                val dayPlan = DayPlan(LocalDate.now())
+                val date = LocalDate.now()
+                val dayPlan = DayPlan(date)
                 dayPlan.addMeal(meal)
                 planDao.insert(dayPlan)
 
-                planDao.findAll().forEach { Log.d("Plans", it.toString()) }
-
+               // planDao.findAll().forEach { Log.d("Plans", it.toString()) }
+                val findByDate = planDao.findByDate(date)
+                Log.d("Find", findByDate.toString())
             }
 
         }

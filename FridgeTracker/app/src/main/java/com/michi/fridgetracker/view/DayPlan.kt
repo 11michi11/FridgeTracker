@@ -7,10 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.michi.fridgetracker.R
 import com.michi.fridgetracker.view.Calendar.Companion.DATE_KEY
+import com.michi.fridgetracker.viewmodel.DayPlanAdapter
 import com.michi.fridgetracker.viewmodel.DayPlanViewModel
+import com.michi.fridgetracker.viewmodel.IngredientsAdapter
+import kotlinx.android.synthetic.main.day_plan_fragment.*
+import kotlinx.android.synthetic.main.fragment_fridge_content.*
 import java.time.LocalDate
 
 class DayPlan : Fragment() {
@@ -31,20 +36,20 @@ class DayPlan : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(DayPlanViewModel::class.java)
-        // TODO: Use the ViewModel
+
 
         val date = arguments?.getSerializable(DATE_KEY) as LocalDate
+        meals.hasFixedSize()
+        meals.layoutManager = LinearLayoutManager(meals.context)
 
+        val adapter = DayPlanAdapter(viewModel)
+        meals.adapter = adapter
 
         viewModel.getPlansMeals(date).observe(this, Observer {
-            var plan = it ?: com.michi.fridgetracker.domain.DayPlan(date)
-            // Load recycler view adapter
+            val plan = it ?: com.michi.fridgetracker.domain.DayPlan(date)
+            val meals = plan.meals.map { it.meal }
+            adapter.setMeals(meals)
         })
 
     }
-
-
-
-
-
 }

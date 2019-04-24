@@ -57,8 +57,16 @@ abstract class PlansDao {
     @Delete
     abstract fun deletePlansMeal(plansMeal: PlansMeal)
 
-    @Query("select * from day_plans where date = :date")
-    abstract fun findByDate(date: LocalDate): DayPlan?
+    fun findByDate(date: LocalDate): DayPlan?{
+        val plan = findPlanByDate(date)
+        plan!!.meals = findAllPlansMeals(plan.dayPlanId).toMutableList()
+        return plan
+    }
 
+    @Query("select * from day_plans where date = :date")
+    abstract fun findPlanByDate(date: LocalDate): DayPlan?
+
+    @Query("delete from plans_meals where planId = :dayPlanId")
+    abstract fun deleteMealFromPlan(dayPlanId: Int)
 
 }

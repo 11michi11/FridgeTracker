@@ -49,11 +49,22 @@ class PlansRepository(application: Application) {
         return liveData
     }
 
+    fun deleteMealFromPlan(dayPlanId: Int) {
+        DeleteMealFromPlanAsyncTask(plansDao).execute(dayPlanId)
+    }
+
     private class FindByDateAsyncTask(val plansDao: PlansDao,val liveData: MutableLiveData<DayPlan>) : AsyncTask<LocalDate, Unit, Unit>() {
 
         override fun doInBackground(vararg date: LocalDate) {
             val plan = plansDao.findByDate(date[0])
             liveData.postValue(plan)
+        }
+    }
+
+    private class DeleteMealFromPlanAsyncTask(val plansDao: PlansDao) : AsyncTask<Int, Unit, Unit>() {
+
+        override fun doInBackground(vararg data: Int?) {
+            plansDao.deleteMealFromPlan(data[0]!!)
         }
     }
 

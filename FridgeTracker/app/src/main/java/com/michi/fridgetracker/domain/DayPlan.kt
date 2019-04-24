@@ -25,6 +25,10 @@ data class DayPlan(
         return "DayPlan(date=$date, dayPlanId=$dayPlanId, meals=$meals)"
     }
 
+    fun deleteMeal(position: Int) {
+        meals.removeAt(position)
+    }
+
 
 }
 
