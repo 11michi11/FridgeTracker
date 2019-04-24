@@ -9,7 +9,7 @@ import java.time.LocalDate
 data class DayPlan(
     val date: LocalDate,
     @PrimaryKey(autoGenerate = true)
-    val dayPlanId: Int = 0
+    var dayPlanId: Int = 0
 ) {
 
     @Ignore
@@ -27,6 +27,10 @@ data class DayPlan(
 
     fun deleteMeal(position: Int) {
         meals.removeAt(position)
+    }
+
+    fun addAll(meals: List<Meal>) {
+        meals.forEach { addMeal(it) }
     }
 
 

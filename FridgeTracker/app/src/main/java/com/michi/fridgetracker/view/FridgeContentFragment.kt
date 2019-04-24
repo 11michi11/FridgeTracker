@@ -12,7 +12,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.michi.fridgetracker.R
 import com.michi.fridgetracker.viewmodel.FridgeContentViewModel
-import com.michi.fridgetracker.viewmodel.IngredientsAdapter
+import com.michi.fridgetracker.viewmodel.adapters.IngredientsAdapter
 import kotlinx.android.synthetic.main.fragment_fridge_content.*
 
 class FridgeContentFragment : Fragment() {

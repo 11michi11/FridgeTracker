@@ -3,8 +3,10 @@ package com.michi.fridgetracker.persistance
 import android.app.Application
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.michi.fridgetracker.domain.Meal
+import com.michi.fridgetracker.domain.MealToChoose
 
 class MealRepository(application: Application) {
 
@@ -43,6 +45,12 @@ class MealRepository(application: Application) {
         DeleteAsyncTask(mealsDao).execute(meal)
     }
 
+    fun getAllIngredientsToChoose(): LiveData<List<MealToChoose>> {
+        val liveData = MutableLiveData<List<MealToChoose>>()
+        FindAllMealsToChooseAsyncTask(mealsDao).execute(liveData)
+        return liveData
+    }
+
     private class DeleteAsyncTask(val mealsDao: MealsDao) : AsyncTask<Meal, Unit, Unit>() {
 
         override fun doInBackground(vararg meals: Meal) {
@@ -54,6 +62,13 @@ class MealRepository(application: Application) {
 
         override fun doInBackground(vararg meals: MutableLiveData<List<Meal>>) {
             meals[0].postValue(mealsDao.findAll())
+        }
+    }
+
+    private class FindAllMealsToChooseAsyncTask(val mealsDao: MealsDao) : AsyncTask<MutableLiveData<List<MealToChoose>>, Unit, Unit>() {
+
+        override fun doInBackground(vararg meals: MutableLiveData<List<MealToChoose>>) {
+            meals[0].postValue(mealsDao.findAll().map { MealToChoose(it, false) })
         }
     }
 

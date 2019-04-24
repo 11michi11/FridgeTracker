@@ -10,6 +10,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".view.ChooseMealActivity">
+        </activity>
         <activity android:name=".view.ChooseIngredient">
         </activity>
         <activity android:name=".view.AddIngredient">

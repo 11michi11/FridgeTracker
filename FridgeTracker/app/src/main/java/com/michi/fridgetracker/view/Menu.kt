@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.michi.fridgetracker.R
-import com.michi.fridgetracker.viewmodel.MenuAdapter
+import com.michi.fridgetracker.viewmodel.adapters.MenuAdapter
 import com.michi.fridgetracker.viewmodel.MenuViewModel
 import kotlinx.android.synthetic.main.menu_fragment.*
 

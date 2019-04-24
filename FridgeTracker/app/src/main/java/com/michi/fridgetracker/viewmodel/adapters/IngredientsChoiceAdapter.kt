@@ -1,4 +1,4 @@
-package com.michi.fridgetracker.viewmodel
+package com.michi.fridgetracker.viewmodel.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +15,7 @@ class IngredientsChoiceAdapter : RecyclerView.Adapter<IngredientsChoiceAdapter.V
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.ingredients_choice_item, parent, false)
+        val view = inflater.inflate(R.layout.choice_item, parent, false)
         return this.ViewHolder(view)
     }
 
@@ -46,7 +46,7 @@ class IngredientsChoiceAdapter : RecyclerView.Adapter<IngredientsChoiceAdapter.V
 
     inner class ViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        val name: TextView = itemView.findViewById(R.id.ingredientNameChoice)
+        val name: TextView = itemView.findViewById(R.id.itemName)
         val checkBox: CheckBox = itemView.findViewById(R.id.checkbox)
 
         init {

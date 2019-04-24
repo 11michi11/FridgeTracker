@@ -18,4 +18,5 @@
     <string name="ingredients">Ingredients</string>
     <string name="choose_a_day">Choose a day</string>
     <string name="plan_a_day">Plan a day</string>
+    <string name="add_meals">Add meals</string>
 </resources>

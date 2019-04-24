@@ -11,13 +11,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.michi.fridgetracker.R
 import com.michi.fridgetracker.domain.Ingredient
 import com.michi.fridgetracker.viewmodel.AddMealViewModel
-import com.michi.fridgetracker.viewmodel.IngredientsAdapter
+import com.michi.fridgetracker.viewmodel.adapters.IngredientsAdapter
 import kotlinx.android.synthetic.main.add_meal_fragment.*
 
 

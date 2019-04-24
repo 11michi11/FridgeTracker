@@ -10,12 +10,13 @@ import java.time.LocalDate
 abstract class PlansDao {
 
 
-    fun insert(plan: DayPlan) {
+    fun insert(plan: DayPlan) : Int{
         val planId = insertOnlyPlan(plan).toInt()
         plan.meals.forEach {
             it.planId = planId
             insertPlansMeals(it)
         }
+        return planId
     }
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -40,10 +41,13 @@ abstract class PlansDao {
     abstract fun findAllPlansMeals(planId: Int): List<PlansMeal>
 
     @Query("select * from day_plans where dayPlanId = :dayPlanId")
-    abstract fun findById(dayPlanId: Int): LiveData<DayPlan>
+    abstract fun findById(dayPlanId: Int): DayPlan
 
     @Query("delete from day_plans")
     abstract fun deleteAll()
+
+    @Query("delete from plans_meals")
+    abstract fun deleteAllPlansMeals()
 
     fun delete(plan: DayPlan) {
         plan.meals.forEach {deletePlansMeal(it) }
@@ -57,9 +61,14 @@ abstract class PlansDao {
     @Delete
     abstract fun deletePlansMeal(plansMeal: PlansMeal)
 
-    fun findByDate(date: LocalDate): DayPlan?{
-        val plan = findPlanByDate(date)
-        plan!!.meals = findAllPlansMeals(plan.dayPlanId).toMutableList()
+    fun findByDate(date: LocalDate): DayPlan{
+        var plan = findPlanByDate(date)
+        if (plan != null)
+            plan.meals = findAllPlansMeals(plan.dayPlanId).toMutableList()
+        else {
+            plan = DayPlan(date)
+            insert(plan)
+        }
         return plan
     }
 

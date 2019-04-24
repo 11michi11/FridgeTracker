@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.michi.fridgetracker.R
 import com.michi.fridgetracker.domain.Ingredient
 import com.michi.fridgetracker.viewmodel.ChooseIngredientViewModel
-import com.michi.fridgetracker.viewmodel.IngredientsChoiceAdapter
+import com.michi.fridgetracker.viewmodel.adapters.IngredientsChoiceAdapter
 import kotlinx.android.synthetic.main.activity_choose_ingredient.*
 
 class ChooseIngredient : AppCompatActivity() {

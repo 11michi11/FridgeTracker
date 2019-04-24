@@ -4,6 +4,8 @@ import android.app.Application
 import android.os.AsyncTask
 import androidx.lifecycle.MutableLiveData
 import com.michi.fridgetracker.domain.DayPlan
+import com.michi.fridgetracker.domain.Meal
+import com.michi.fridgetracker.domain.PlansMeal
 import java.time.LocalDate
 
 class PlansRepository(application: Application) {
@@ -53,6 +55,10 @@ class PlansRepository(application: Application) {
         DeleteMealFromPlanAsyncTask(plansDao).execute(dayPlanId)
     }
 
+    fun addMealsToPlan(meals: List<Meal>, dayPlanId: Int) {
+        InsertMealsToPlanAsyncTask(plansDao).execute(MealsWithPlanId(meals, dayPlanId))
+    }
+
     private class FindByDateAsyncTask(val plansDao: PlansDao,val liveData: MutableLiveData<DayPlan>) : AsyncTask<LocalDate, Unit, Unit>() {
 
         override fun doInBackground(vararg date: LocalDate) {
@@ -88,4 +94,18 @@ class PlansRepository(application: Application) {
             plansDao.insert(plan[0]!!)
         }
     }
+
+    private class InsertMealsToPlanAsyncTask(val plansDao: PlansDao) : AsyncTask<MealsWithPlanId, Unit, Unit>() {
+
+        override fun doInBackground(vararg data: MealsWithPlanId) {
+            val (list, planId) = data[0]
+            list.forEach {
+                plansDao.insertPlansMeals(PlansMeal(it, planId = planId))
+            }
+            val findByDate = plansDao.findById(planId)
+
+        }
+    }
 }
+
+data class MealsWithPlanId(val meals: List<Meal>, val dayPlanId: Int)

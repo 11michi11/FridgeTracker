@@ -1,4 +1,4 @@
-package com.michi.fridgetracker.viewmodel
+package com.michi.fridgetracker.viewmodel.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.michi.fridgetracker.R
 import com.michi.fridgetracker.domain.Meal
+import com.michi.fridgetracker.viewmodel.DayPlanViewModel
 
 class DayPlanAdapter(val viewModel: DayPlanViewModel) : RecyclerView.Adapter<DayPlanAdapter.ViewHolder>() {
 

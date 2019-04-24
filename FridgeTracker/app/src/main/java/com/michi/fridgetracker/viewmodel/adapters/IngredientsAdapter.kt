@@ -1,4 +1,4 @@
-package com.michi.fridgetracker.viewmodel
+package com.michi.fridgetracker.viewmodel.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +10,7 @@ import android.view.Gravity
 import android.content.Context.LAYOUT_INFLATER_SERVICE
 import android.widget.*
 import android.widget.Toast.LENGTH_SHORT
+import com.michi.fridgetracker.viewmodel.IngredientSavableViewModel
 import java.lang.NumberFormatException
 
 
@@ -51,7 +52,7 @@ class IngredientsAdapter(val viewModel: IngredientSavableViewModel) :
 
     inner class ViewHolder(itemView: View, private val listener: (Int) -> Unit) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        val name: TextView = itemView.findViewById(R.id.ingredientNameChoice)
+        val name: TextView = itemView.findViewById(R.id.itemName)
         val quantity: TextView = itemView.findViewById(R.id.ingredientQuantity)
         val price: TextView = itemView.findViewById(R.id.ingredientPrice)
         private val editIngredient: ImageButton = itemView.findViewById(R.id.editIngrBtn)

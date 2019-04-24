@@ -55,6 +55,7 @@ abstract class FridgeRoomDatabase : RoomDatabase() {
                 ingredientsDao.deleteAll()
                 mealsDao.deleteAll()
                 planDao.deleteAll()
+                planDao.deleteAllPlansMeals()
 
                 val ingredients = mutableListOf(
                     Ingredient(name = "Spaghetti chili sauce", quantity = 1.0, price = 15.00),

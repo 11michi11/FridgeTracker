@@ -18,7 +18,7 @@
 
 
     <EditText
-            android:id="@+id/ingredientNameChoice"
+            android:id="@+id/itemName"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:hint="@string/ingredient_name"

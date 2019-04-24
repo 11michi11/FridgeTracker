@@ -1,4 +1,4 @@
-package com.michi.fridgetracker.viewmodel
+package com.michi.fridgetracker.viewmodel.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.michi.fridgetracker.R
 import com.michi.fridgetracker.domain.Meal
+import com.michi.fridgetracker.viewmodel.MenuViewModel
 
 class MenuAdapter(private val viewModel: MenuViewModel) : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
 

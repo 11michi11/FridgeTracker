@@ -5,14 +5,13 @@ import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import java.io.Serializable
-import java.time.LocalTime
 
 @Entity(tableName = "meals")
 data class Meal(
     var name: String,
     @PrimaryKey(autoGenerate = true)
-var mealId: Int = 0
-) {
+    var mealId: Int = 0
+) : Serializable {
 
     @Ignore
     var ingredients: MutableList<MealsIngredient> = mutableListOf()
@@ -38,4 +37,6 @@ data class PlansMeal(
     @PrimaryKey(autoGenerate = true)
     var plansMealId: Int = 0
 ) : Serializable
+
+data class MealToChoose(val meal: Meal, var isChecked: Boolean = false)
 
