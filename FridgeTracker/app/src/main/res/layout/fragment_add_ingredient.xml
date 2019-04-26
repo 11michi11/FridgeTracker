@@ -30,7 +30,7 @@
             android:id="@+id/ingredientPrice"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:hint="@string/price"
+            android:hint="@string/priceOptional"
             android:layout_marginTop="25dp"
             android:layout_gravity="center"
     />

@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Toast.makeText(this, "Week", Toast.LENGTH_SHORT).show()
             }
             R.id.shoppingList -> {
-                Toast.makeText(this, "Shopping list", Toast.LENGTH_SHORT).show()
+                navController.navigate(R.id.shoppingList2)
             }
             R.id.fridge -> {
                 navController.navigate(R.id.fridgeContentFragment)

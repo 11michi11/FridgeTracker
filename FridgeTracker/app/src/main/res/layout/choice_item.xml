@@ -13,15 +13,20 @@
             style="@style/IngredientName"
     />
 
-
-    <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/checkbox"
+    <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textAlignment="center"
-    />
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1">
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+        />
+    </LinearLayout>
 
 
 </LinearLayout>

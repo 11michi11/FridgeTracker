@@ -1,6 +1,5 @@
 package com.michi.fridgetracker.persistance
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.michi.fridgetracker.domain.DayPlan
 import com.michi.fridgetracker.domain.PlansMeal

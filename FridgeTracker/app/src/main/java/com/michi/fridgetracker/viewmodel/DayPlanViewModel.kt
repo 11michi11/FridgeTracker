@@ -5,17 +5,20 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.michi.fridgetracker.domain.DayPlan
 import com.michi.fridgetracker.domain.Meal
+import com.michi.fridgetracker.persistance.IngredientsRepository
 import com.michi.fridgetracker.persistance.PlansRepository
 import java.time.LocalDate
 
 class DayPlanViewModel(application: Application) : AndroidViewModel(application) {
 
     private lateinit var plansRepository: PlansRepository
+    private lateinit var ingredientRepository: IngredientsRepository
     private lateinit var planLiveData: MutableLiveData<DayPlan>
     private lateinit var plan: DayPlan
 
     init {
         plansRepository = PlansRepository(this.getApplication())
+        ingredientRepository = IngredientsRepository(this.getApplication())
     }
 
     fun getPlansMeals(date: LocalDate): MutableLiveData<DayPlan> {
@@ -37,7 +40,8 @@ class DayPlanViewModel(application: Application) : AndroidViewModel(application)
         plan.addAll(meals)
         planLiveData.value = plan
         plansRepository.insert(plan)
-//        plansRepository.addMealsToPlan(meals, plan.dayPlanId)
+
+        ingredientRepository.adjustIngredientsQuantityFromMeals(meals)
     }
 
 }

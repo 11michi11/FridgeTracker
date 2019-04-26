@@ -28,4 +28,7 @@ interface IngredientsDao {
     @Query("delete from ingredients")
     fun deleteAll()
 
+    @Query("select * from ingredients where quantity <= 0")
+    fun findAllShoppingIngredients() : LiveData<List<Ingredient>>
+
 }
