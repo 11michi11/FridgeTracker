@@ -3,7 +3,9 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded"
+        android:layout_margin="5dp">
 
     <TextView
             android:id="@+id/mealName"
@@ -11,7 +13,8 @@
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:text="Salami Sandwich"
-            style="@style/IngredientName"/>
+            style="@style/IngredientName"
+            android:textColor="@color/white"/>
 
 
     <LinearLayout
@@ -22,17 +25,19 @@
 
         <ImageButton
                 android:id="@+id/editMeal"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_edit"/>
+                android:src="@drawable/ic_edit"
+                android:layout_gravity="center"/>
 
         <ImageButton
                 android:id="@+id/deleteMeal"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_remove"/>
+                android:src="@drawable/ic_remove"
+                android:layout_gravity="center"/>
 
     </LinearLayout>
 

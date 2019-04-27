@@ -16,7 +16,7 @@
         <TextView
                 android:id="@+id/nameLabel"
                 android:layout_width="wrap_content"
-                style="@style/DefaultText"
+                style="@style/DefaultTextBlack"
                 android:layout_height="wrap_content"
                 android:text="@string/create_meal_name"
                 android:layout_alignParentTop="true"
@@ -29,6 +29,7 @@
                 android:layout_height="50dp"
                 android:layout_below="@+id/nameLabel"
                 android:layout_margin="20dp"
+                android:backgroundTint="@color/colorPrimaryDark"
         />
 
         <TextView
@@ -37,7 +38,7 @@
                 android:text="@string/ingredients"
                 style="@style/IngredientName"
                 android:layout_below="@id/mealNameCreate"
-                android:background="#a0a0a0"
+                android:background="@drawable/rounded"
                 android:elevation="4dp"
         />
 

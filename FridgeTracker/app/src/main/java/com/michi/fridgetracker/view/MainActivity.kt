@@ -3,6 +3,7 @@ package com.michi.fridgetracker.view
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -11,8 +12,8 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.google.android.material.navigation.NavigationView
 import com.michi.fridgetracker.R
-import com.michi.fridgetracker.persistance.MealRepository
 import kotlinx.android.synthetic.main.activity_main.*
+import java.time.LocalDate
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 navController.navigate(R.id.calendarFragment)
             }
             R.id.week -> {
-                Toast.makeText(this, "Week", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Coming soon", Toast.LENGTH_SHORT).show()
             }
             R.id.shoppingList -> {
                 navController.navigate(R.id.shoppingList2)
@@ -82,5 +83,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showPlanForToday() {
+        val date = LocalDate.now()
+        val bundle = Bundle()
+        bundle.putSerializable(Calendar.DATE_KEY, date)
+        navController.navigate(R.id.dayPlan, bundle)
     }
 }

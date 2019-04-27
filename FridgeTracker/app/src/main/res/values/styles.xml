@@ -6,15 +6,25 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:datePickerDialogTheme">@style/DatePickerTheme</item>
+        <item name="android:timePickerDialogTheme">@style/DatePickerTheme</item>
+        <item name="android:datePickerStyle">@style/DatePickerTheme</item>
+        <item name="android:datePickerMode">@style/DatePickerTheme</item>
     </style>
 
     <style name="IngredientName">
         <item name="android:textSize">35sp</item>
-        <item name="android:textColor">#000000</item>
+        <item name="android:textColor">#FFFFFF</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="DefaultText">
+        <item name="android:textSize">40sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="DefaultTextBlack">
         <item name="android:textSize">40sp</item>
         <item name="android:textColor">#000000</item>
         <item name="android:gravity">center</item>
@@ -24,6 +34,12 @@
         <item name="android:textSize">25sp</item>
         <item name="android:textColor">#000000</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="DatePickerTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
 </resources>
