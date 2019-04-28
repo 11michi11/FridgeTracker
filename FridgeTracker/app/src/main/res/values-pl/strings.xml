@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FridgeTracker</string>
+    <string name="add_ingredient">Dodaj składnik</string>
+    <string name="add_ingredients">Dodaj składniki</string>
+    <string name="add_meals">Dodaj danie</string>
+    <string name="calendar">Kalendarz</string>
+    <string name="choose_a_day">Wybierz dzień</string>
+    <string name="close">zamknij</string>
+    <string name="create_meal_name">Nazwa</string>
+    <string name="fridge_content">Lodówka</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ingredient_name">Nazwa</string>
+    <string name="ingredients">Składniki</string>
+    <string name="menu">Menu</string>
+    <string name="open">otwórz</string>
+    <string name="plan_a_day">Zaplanuj dzień</string>
+    <string name="plan_week">Zaplanuj tydzień</string>
+    <string name="price">"Cena: "</string>
+    <string name="priceOptional">Cena (opcjonalnie)</string>
+    <string name="quantity">"Ilość: "</string>
+    <string name="save">Zapisz</string>
+    <string name="shopping_list">Lista zakupów</string>
+</resources>

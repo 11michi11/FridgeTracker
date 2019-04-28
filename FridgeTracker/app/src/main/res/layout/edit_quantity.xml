@@ -4,7 +4,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded"
+        android:background="@drawable/rounded_popup"
 android:layout_margin="5dp">
 
 
@@ -26,6 +26,7 @@ android:layout_margin="5dp">
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:textColor="@color/white"
+            android:backgroundTint="#000000"
     />
     <Button
             android:id="@+id/saveQuantity"
