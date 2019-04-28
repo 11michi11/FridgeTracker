@@ -58,7 +58,6 @@ class AddMeal : Fragment() {
                 @Suppress("UNCHECKED_CAST")
                 val ingredients = data?.extras?.getSerializable(INGREDIENTS_KEY) as ArrayList<Ingredient>
                 viewModel.addIngredients(ingredients)
-                Toast.makeText(this.context, "Choosen ingredients: $ingredients", Toast.LENGTH_SHORT).show()
                 Log.d("Ingredients", ingredients.toString())
             }
         }

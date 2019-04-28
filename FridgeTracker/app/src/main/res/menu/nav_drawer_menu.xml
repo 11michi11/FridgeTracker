@@ -22,4 +22,13 @@
             android:title="@string/menu"/>
     </group>
 
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/logOut"
+            android:title="@string/log_out"/>
+    </group>
+
+
+
 </menu>

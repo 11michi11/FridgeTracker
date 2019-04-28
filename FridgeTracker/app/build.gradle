@@ -8,6 +8,8 @@ apply plugin: "androidx.navigation.safeargs.kotlin"
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'com.google.gms.google-services'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -55,4 +57,9 @@ dependencies {
 
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+    implementation 'com.google.firebase:firebase-core:16.0.8'
+    implementation 'com.google.firebase:firebase-auth:16.2.1'
+    implementation 'com.firebaseui:firebase-ui-database:4.0.0'
+    implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
 }

@@ -15,7 +15,6 @@ class AddMealViewModel(application: Application) : AndroidViewModel(application)
     private val ingredients = mutableListOf<Ingredient>()
 
     init {
-        ingredients.add(Ingredient(name = "Test", quantity = 1.0, price = 2.0))
         ingredientsLiveData.value = ingredients
     }
 

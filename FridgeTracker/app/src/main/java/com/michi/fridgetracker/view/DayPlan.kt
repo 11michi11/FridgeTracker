@@ -64,7 +64,6 @@ class DayPlan : Fragment() {
                 @Suppress("UNCHECKED_CAST")
                 val meals = data?.extras?.getSerializable(MEALS_KEY) as ArrayList<Meal>
                 viewModel.addMeals(meals)
-                Toast.makeText(this.context, "Choosen meals: $meals", Toast.LENGTH_SHORT).show()
                 Log.d("Meals", meals.toString())
             }
         }
